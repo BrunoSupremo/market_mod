@@ -6,7 +6,7 @@ G.AddData({
 	manifest:0,
 	requires:['Default dataset*'],
 	sheets:{
-		'market_images':'market_images.png'
+		'market_images':'https://brunosupremo.github.io/market_mod/market_images.png'
 	},
 	func:function() {
 		G.unitCategories.push({
@@ -15,7 +15,8 @@ G.AddData({
 		});
 		new G.Tech({
 			name:'market_tech',
-			desc:'@unlocks [market]s<>[worker,Traders] can set in a piece of [land] to buy or sell items',
+			displayName:'Markets',
+			desc:'@unlocks [market]s<>[population,Traders] can set in a piece of [land] to buy or sell items',
 			icon:[0,0,"market_images"],
 			cost:{
 				'insight':5,
@@ -28,7 +29,7 @@ G.AddData({
 		new G.Res({
 			name:'market_coin',
 			displayName:'Coin',
-			desc:'Market money used to buy and sell other goods.//Used by [worker,Traders].//Can be stolen over time',
+			desc:'Market money used to buy and sell other goods.//Used by [population,Traders].//Can be stolen over time',
 			icon:[0,0,"market_images"],
 			category:'misc',
 			tick:function(me,tick) {
@@ -42,12 +43,15 @@ G.AddData({
 			desc:'@Your people learn the tricks of trading, prices get 10% better, for both buying and selling',
 			icon:[20,1],
 			chance:20,
+			cost: {
+				'culture': 5
+			},
 			req:{'sedentism':true},
 		});
 
 		new G.Unit({
 			name:'market',
-			desc:'A [worker, Trader] can set a market in this piece of [land] to sell or buy items.',
+			desc:'A [population, Trader] can set a market in this piece of [land] to sell or buy items.',
 			icon:[0,0,"market_images"],
 			cost:{},
 			use:{
