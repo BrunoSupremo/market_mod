@@ -60,7 +60,7 @@ G.AddData({
 			desc:'A [population, Trader] can set a market in this piece of [land] to sell or buy items.',
 			icon:[0,0,"market_images"],
 			cost:{},
-			req:{},
+			req:{'market_tech':true},
 			use:{
 				'worker':1,
 				'land':1,
