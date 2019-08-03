@@ -13,22 +13,28 @@ G.AddData({
 			id:'market_category',
 			name:'Market'
 		});
+
 		new G.Tech({
 			name:'market_tech',
 			displayName:'Markets',
-			desc:'@unlocks [market]s<>[population,Traders] can set in a piece of [land] to buy or sell items',
+			desc:'@unlocks [market]s<>[population,Traders] can settle in a piece of [land] to buy or sell items',
 			icon:[0,0,"market_images"],
 			cost:{
 				'insight':5,
 				'culture':5
 			},
 			req:{'sedentism':true},
-			effects:[{type:'show context', what:['market_category']}],
+			effects:[
+			{
+				type:'show context',
+				what:['market_category']
+			}
+			]
 		});
 
 		new G.Res({
 			name:'market_coin',
-			displayName:'Coin',
+			displayName:'Coins',
 			desc:'Market money used to buy and sell other goods.//Used by [population,Traders].//Can be stolen over time',
 			icon:[0,0,"market_images"],
 			category:'misc',
@@ -54,6 +60,7 @@ G.AddData({
 			desc:'A [population, Trader] can set a market in this piece of [land] to sell or buy items.',
 			icon:[0,0,"market_images"],
 			cost:{},
+			req:{},
 			use:{
 				'worker':1,
 				'land':1,
