@@ -6,7 +6,7 @@ G.AddData({
 	manifest:0,
 	requires:['Default dataset*'],
 	sheets:{
-		'market_images':'https://brunosupremo.github.io/market_mod/market_images.png'
+		'market_images':'https://brunosupremo.github.io/market_mod/market_images.png?v=2'
 	},
 	func:function() {
 		G.unitCategories.unshift({
@@ -17,7 +17,7 @@ G.AddData({
 		new G.Tech({
 			name:'market_tech',
 			displayName:'Markets',
-			desc:'@unlocks [trader_sell]s <> [population,Traders] can settle in a piece of [land] to buy or sell more items',
+			desc:'@unlocks [trader_sell, Trading] <> [population,Traders] can settle in a piece of [land] to buy or sell more items',
 			icon:[0,0,"market_images",24,1],
 			cost:{
 				'insight':5,
@@ -60,12 +60,12 @@ G.AddData({
 			'herb':{
 				name:'herbs',
 				icon: [4,6],
-				desc:'Buy [herb]s with [market_coin].'
+				desc:'Buy [herb]s with [market_coin, Coins].'
 			},
 			'salt':{
 				name:'salt',
 				icon: [11,7],
-				desc:'Buy [salt] with [market_coin].'
+				desc:'Buy [salt] with [market_coin, Coins].'
 			},
 		};
 		let sell_modes = {};
