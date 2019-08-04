@@ -148,7 +148,7 @@ G.AddData({
 			name:'trader_sell',
 			displayName:'Trader',
 			desc:'A [population, Trader] that can sell items.',
-			icon:[5,5],
+			icon:[1,0,"market_images"],
 			cost:{},
 			req:{'market_tech':true},
 			use:{
