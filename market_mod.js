@@ -324,25 +324,57 @@ G.AddData({
 		}
 		];
 
-		let sell_effects = [];
+		let sell_effects	= [];
+		let sell_effects10	= [];
+		let sell_effects100	= [];
+		let buy_effects10	= [];
+		let buy_effects100	= [];
 		for (var i = 0; i < buy_effects.length; i++) {
-			sell_effects[i] = {};
+			sell_effects[i]		= {};
+			sell_effects10[i]	= {};
+			sell_effects100[i]	= {};
+			buy_effects10[i]	= {};
+			buy_effects100[i]	= {};
 			for (key in buy_effects[i]) {
 				if (typeof buy_effects[i][key] !== 'object') {
-					sell_effects[i][key] = buy_effects[i][key];
+					sell_effects[i][key]	= buy_effects[i][key];
+					sell_effects10[i][key]	= buy_effects[i][key];
+					sell_effects100[i][key]	= buy_effects[i][key];
+					buy_effects10[i][key]	= buy_effects[i][key];
+					buy_effects100[i][key]	= buy_effects[i][key];
 				}else{
 					if(key == 'req'){
-						sell_effects[i][key] = {'traders':true}
+						sell_effects[i][key]	= {'traders':true};
+						sell_effects10[i][key]	= {'traders':true};
+						sell_effects100[i][key]	= {'traders':true};
+						buy_effects10[i][key]	= {'traders':true};
+						buy_effects100[i][key]	= {'traders':true};
 					}
 				}
 			}
 			for (key in buy_effects[i].from) {
-				sell_effects[i].into = {};
-				sell_effects[i].into[key] = buy_effects[i].from[key];
+				sell_effects[i].into	= {};
+				sell_effects10[i].into	= {};
+				sell_effects100[i].into	= {};
+				buy_effects10[i].into	= {};
+				buy_effects100[i].into	= {};
+				sell_effects[i].into[key] 		= buy_effects[i].from[key];
+				sell_effects10[i].into[key]		= buy_effects[i].from[key] *10;
+				sell_effects100[i].into[key]	= buy_effects[i].from[key] *100;
+				buy_effects10[i].into[key]		= buy_effects[i].from[key] *10;
+				buy_effects100[i].into[key]		= buy_effects[i].from[key] *100;
 			}
 			for (key in buy_effects[i].into) {
-				sell_effects[i].from = {};
-				sell_effects[i].from[key] = buy_effects[i].into[key];
+				sell_effects[i].from 	= {};
+				sell_effects10[i].from	= {};
+				sell_effects100[i].from	= {};
+				buy_effects10[i].from	= {};
+				buy_effects100[i].from	= {};
+				sell_effects[i].from[key] 		= buy_effects[i].into[key];
+				sell_effects10[i].from[key]		= buy_effects[i].into[key] *10;
+				sell_effects100[i].from[key]	= buy_effects[i].into[key] *100;
+				buy_effects10[i].from[key]		= buy_effects[i].into[key] *10;
+				buy_effects100[i].from[key]		= buy_effects[i].into[key] *100;
 			}
 		}
 
@@ -377,29 +409,11 @@ G.AddData({
 			category:'market_category',
 		});
 
-		for (var i = 0; i < buy_effects.length; i++) {
-			for (key in buy_effects[i]) {
-				if (key == "from" || key == "into") {
-					for (subkey in buy_effects[i][key]) {
-						buy_effects[i][key][subkey] = buy_effects[i][key][subkey] *10;
-					}
-				}
-			}
-		}
-		for (var i = 0; i < sell_effects.length; i++) {
-			for (key in sell_effects[i]) {
-				if (key == "from" || key == "into") {
-					for (subkey in sell_effects[i][key]) {
-						sell_effects[i][key][subkey] = sell_effects[i][key][subkey] *10;
-					}
-				}
-			}
-		}
 		new G.Unit({
 			name:'bazaar_buy',
 			displayName:'Bazaar',
 			desc:'A bazaar is set in this piece of [land] to buy items in bulks of 10.',
-			icon:[1,1,"market_images"],
+			icon:[2,0,"market_images", 1,1,"market_images"],
 			cost:{},
 			req:{'market_tech':true},
 			use:{
@@ -408,14 +422,14 @@ G.AddData({
 			},
 			gizmos:true,
 			modes: buy_modes,
-			effects: buy_effects,
+			effects: buy_effects10,
 			category:'market_category',
 		});
 		new G.Unit({
 			name:'bazaar_sell',
 			displayName:'Bazaar',
 			desc:'A bazaar is set in this piece of [land] to sell items in bulks of 10.',
-			icon:[1,1,"market_images"],
+			icon:[1,0,"market_images", 1,1,"market_images"],
 			cost:{},
 			req:{'market_tech':true},
 			use:{
@@ -424,15 +438,15 @@ G.AddData({
 			},
 			gizmos:true,
 			modes: sell_modes,
-			effects: sell_effects,
+			effects: sell_effects10,
 			category:'market_category',
 		});
 
 		new G.Unit({
-			name:'market3',
+			name:'market_buy',
 			displayName:'Market',
-			desc:'A [market3] is set in this piece of [land] to sell or buy 100 items at once.',
-			icon:[2,1,"market_images"],
+			desc:'A market is set in this piece of [land] to sell or buy 100 items at once.',
+			icon:[2,0,"market_images", 2,1,"market_images"],
 			cost:{},
 			req:{'market_tech':true},
 			use:{
@@ -440,42 +454,24 @@ G.AddData({
 				'land':1,
 			},
 			gizmos:true,
-			modes:{
-				'off':G.MODE_OFF,
-				'buy herb':{
-					name:'buy herbs',
-					icon: [2,0, "market_images", 4,6],
-					desc:'Buy [herb] at 1 [market_coin].'
-				},
-				'sell herb':{
-					name:'sell herbs',
-					icon: [1,0, "market_images", 4,6],
-					desc:'Sell [herb] for 0.5 [market_coin].'
-				},
+			modes: buy_modes,
+			effects: buy_effects100,
+			category:'market_category',
+		});
+		new G.Unit({
+			name:'market_sell',
+			displayName:'Market',
+			desc:'A market is set in this piece of [land] to sell or sell 100 items at once.',
+			icon:[1,0,"market_images", 2,1,"market_images"],
+			cost:{},
+			req:{'market_tech':true},
+			use:{
+				'worker':1,
+				'land':1,
 			},
-			effects:[
-			{
-				type:'convert',
-				from:{'market_coin':100},
-				into:{'herb':100},
-				every:5,
-				mode:'buy herb'
-			},
-			{
-				type:'convert',
-				from:{'herb':100},
-				into:{'market_coin':50},
-				every:5,
-				mode:'sell herb'
-			},
-			{
-				type:'mult',
-				value:1.1,
-				req:{
-					'traders':true
-				}
-			}
-			],
+			gizmos:true,
+			modes: sell_modes,
+			effects: sell_effects100,
 			category:'market_category',
 		});
 	}
