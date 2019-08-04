@@ -114,15 +114,17 @@ G.AddData({
 				if (typeof buy_effects[i][key] !== 'object') {
 					sell_effects[i][key] = buy_effects[i][key];
 				}else{
-					if(buy_effects[i][key].req){
-						sell_effects[i][key].req = {'traders':true}
+					if(key == 'req'){
+						sell_effects[i][key] = {'traders':true}
 					}
 				}
 			}
 			for (key in buy_effects[i].from) {
+				sell_effects[i].into = {};
 				sell_effects[i].into[key] = buy_effects[i].from[key];
 			}
 			for (key in buy_effects[i].into) {
+				sell_effects[i].from = {};
 				sell_effects[i].from[key] = buy_effects[i].into[key];
 			}
 		}
