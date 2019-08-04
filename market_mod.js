@@ -17,7 +17,7 @@ G.AddData({
 		new G.Tech({
 			name:'market_tech',
 			displayName:'Markets',
-			desc:'@unlocks [trader_sell]s<>[population,Traders] can settle in a piece of [land] to buy or sell more items',
+			desc:'@unlocks [trader_sell]s <> [population,Traders] can settle in a piece of [land] to buy or sell more items',
 			icon:[0,0,"market_images",24,1],
 			cost:{
 				'insight':5,
@@ -70,16 +70,16 @@ G.AddData({
 		};
 		let sell_modes = {};
 		for (key in buy_modes) {
-			if (typeof buy_modes[key] === 'object') {
+			if (key == 'off') {
+				sell_modes[key] = G.MODE_OFF;
+			}else{
 				let new_desc = buy_modes[key].desc.replace("Buy", "Sell");
 				new_desc = new_desc.replace("with", "for");
 				sell_modes[key] = {
 					name: buy_modes[key].name,
 					icon: buy_modes[key].icon,
-					desc: buy_modes[key].desc
+					desc: new_desc
 				}
-			}else{
-				sell_modes[key] = buy_modes[key];
 			}
 		}
 
@@ -133,7 +133,7 @@ G.AddData({
 			name:'trader_buy',
 			displayName:'Trader',
 			desc:'A [population, Trader] that can buy items.',
-			icon:[0,1,"market_images", 2,0,"market_images"],
+			icon:[2,0,"market_images", 0,1,"market_images"],
 			cost:{},
 			req:{'market_tech':true},
 			use:{
@@ -148,7 +148,7 @@ G.AddData({
 			name:'trader_sell',
 			displayName:'Trader',
 			desc:'A [population, Trader] that can sell items.',
-			icon:[0,1,"market_images", 1,0,"market_images"],
+			icon:[1,0,"market_images", 0,1,"market_images"],
 			cost:{},
 			req:{'market_tech':true},
 			use:{
