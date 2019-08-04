@@ -35,7 +35,7 @@ G.AddData({
 		new G.Res({
 			name:'market_coin',
 			displayName:'Coins',
-			desc:'Market money used to buy and sell other goods.//Used by [population,Traders].//Can be stolen over time',
+			desc:'Market currency used to buy and sell other goods.//Used by [population,Traders].//Can be stolen over time',
 			icon:[0,0,"market_images"],
 			category:'misc',
 			tick:function(me,tick) {
@@ -62,10 +62,50 @@ G.AddData({
 				icon: [4,6],
 				desc:'Buy [herb]s with [market_coin].'
 			},
+			'food':{
+				name:'food',
+				icon: [3,6],
+				desc:'Buy [food] with [market_coin].'
+			},
+			'arch_build':{
+				name:'archaic materials',
+				icon: [2,7],
+				desc:'Buy [archaic building materials] with [market_coin].'
+			},
+			'base_build':{
+				name:'basic materials',
+				icon: [2,8],
+				desc:'Buy [basic building materials] with [market_coin].'
+			},
+			'precious_materials':{
+				name:'precious materials',
+				icon: [16,8],
+				desc:'Buy [precious building materials] with [market_coin].'
+			},
+			'sand':{
+				name:'sand',
+				icon: [4,9],
+				desc:'Buy [sand] with [market_coin].'
+			},
+			'leather':{
+				name:'leather',
+				icon: [10,7],
+				desc:'Buy [leather] with [market_coin].'
+			},
+			'basic clothes':{
+				name:'basic clothes',
+				icon: [16,7],
+				desc:'Buy [basic clothes] with [market_coin].'
+			},
 			'salt':{
 				name:'salt',
 				icon: [11,7],
 				desc:'Buy [salt] with [market_coin].'
+			},
+			'pot':{
+				name:'pot',
+				icon: [13,5],
+				desc:'Buy [pot] with [market_coin].'
 			},
 		};
 		let sell_modes = {};
@@ -85,18 +125,195 @@ G.AddData({
 
 		let buy_effects = [
 		{
+			mode:'herb',
 			type:'convert',
 			from:{'market_coin':1},
 			into:{'herb':1},
-			every:5,
-			mode:'herb'
+			every:5
 		},
 		{
+			mode:'food',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'fruit':1},
+			every:5
+		},
+		{
+			mode:'food',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'meat':1},
+			every:5
+		},
+		{
+			mode:'food',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'cooked meat':1},
+			every:5
+		},
+		{
+			mode:'food',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'cured meat':1},
+			every:5
+		},
+		{
+			mode:'food',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'seafood':1},
+			every:5
+		},
+		{
+			mode:'food',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'cooked seafood':1},
+			every:5
+		},
+		{
+			mode:'food',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'cured seafood':1},
+			every:5
+		},
+		{
+			mode:'food',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'bread':1},
+			every:5
+		},
+		{
+			mode:'food',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'bugs':1},
+			every:5,
+			req:{'insects as food': 'on'}
+		},
+		{
+			mode:'arch_build',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'stone':1},
+			every:5
+		},
+		{
+			mode:'arch_build',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'stick':1},
+			every:5
+		},
+		{
+			mode:'arch_build',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'bone':1},
+			every:5,
+			req:{'bone-working': true}
+		},
+		{
+			mode:'arch_build',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'limestone':1},
+			every:5
+		},
+		{
+			mode:'arch_build',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'mud':1},
+			every:5
+		},
+		{
+			mode:'base_build',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'cut stone':1},
+			every:5
+		},
+		{
+			mode:'base_build',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'log':1},
+			every:5
+		},
+		{
+			mode:'base_build',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'lumber':1},
+			every:5
+		},
+		{
+			mode:'base_build',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'brick':1},
+			every:5
+		},
+		{
+			mode:'precious_materials',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'marble':1},
+			every:5,
+		},
+		{
+			mode:'precious_materials',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'gold block':1},
+			every:5,
+		},
+		{
+			mode:'precious_materials',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'gem block':1},
+			every:5,
+		},
+		{
+			mode:'sand',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'sand':1},
+			every:5,
+		},
+		{
+			mode:'leather',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'leather':1},
+			every:5,
+		},
+		{
+			mode:'basic clothes',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'basic clothes':1},
+			every:5,
+		},
+		{
+			mode:'salt',
 			type:'convert',
 			from:{'market_coin':1},
 			into:{'salt':1},
 			every:5,
-			mode:'salt'
+		},
+		{
+			mode:'pot',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'pot':1},
+			every:5,
 		},
 		{
 			type:'mult',
@@ -148,7 +365,7 @@ G.AddData({
 			name:'trader_sell',
 			displayName:'Trader',
 			desc:'A [population, Trader] that can sell items.',
-			icon:[1,0,"market_images"],
+			icon:[1,0,"market_images", 0,1,"market_images"],
 			cost:{},
 			req:{'market_tech':true},
 			use:{
