@@ -356,8 +356,8 @@ G.AddData({
 				sell_effects[i].into	= {};
 				sell_effects10[i].into	= {};
 				sell_effects100[i].into	= {};
-				buy_effects10[i].into	= {};
-				buy_effects100[i].into	= {};
+				buy_effects10[i].from	= {};
+				buy_effects100[i].from	= {};
 				sell_effects[i].into[key] 		= buy_effects[i].from[key];
 				sell_effects10[i].into[key]		= buy_effects[i].from[key] *10;
 				sell_effects100[i].into[key]	= buy_effects[i].from[key] *100;
@@ -368,8 +368,8 @@ G.AddData({
 				sell_effects[i].from 	= {};
 				sell_effects10[i].from	= {};
 				sell_effects100[i].from	= {};
-				buy_effects10[i].from	= {};
-				buy_effects100[i].from	= {};
+				buy_effects10[i].into	= {};
+				buy_effects100[i].into	= {};
 				sell_effects[i].from[key] 		= buy_effects[i].into[key];
 				sell_effects10[i].from[key]		= buy_effects[i].into[key] *10;
 				sell_effects100[i].from[key]	= buy_effects[i].into[key] *100;
