@@ -361,8 +361,8 @@ G.AddData({
 				sell_effects[i].into[key] 		= buy_effects[i].from[key];
 				sell_effects10[i].into[key]		= buy_effects[i].from[key] *10;
 				sell_effects100[i].into[key]	= buy_effects[i].from[key] *100;
-				buy_effects10[i].into[key]		= buy_effects[i].from[key] *10;
-				buy_effects100[i].into[key]		= buy_effects[i].from[key] *100;
+				buy_effects10[i].from[key]		= buy_effects[i].from[key] *10;
+				buy_effects100[i].from[key]		= buy_effects[i].from[key] *100;
 			}
 			for (key in buy_effects[i].into) {
 				sell_effects[i].from 	= {};
@@ -373,8 +373,8 @@ G.AddData({
 				sell_effects[i].from[key] 		= buy_effects[i].into[key];
 				sell_effects10[i].from[key]		= buy_effects[i].into[key] *10;
 				sell_effects100[i].from[key]	= buy_effects[i].into[key] *100;
-				buy_effects10[i].from[key]		= buy_effects[i].into[key] *10;
-				buy_effects100[i].from[key]		= buy_effects[i].into[key] *100;
+				buy_effects10[i].into[key]		= buy_effects[i].into[key] *10;
+				buy_effects100[i].into[key]		= buy_effects[i].into[key] *100;
 			}
 		}
 
@@ -445,7 +445,7 @@ G.AddData({
 		new G.Unit({
 			name:'market_buy',
 			displayName:'Market',
-			desc:'A market is set in this piece of [land] to sell or buy 100 items at once.',
+			desc:'A market is set in this piece of [land] to buy 100 items at once.',
 			icon:[2,0,"market_images", 2,1,"market_images"],
 			cost:{},
 			req:{'market_tech':true},
@@ -461,7 +461,7 @@ G.AddData({
 		new G.Unit({
 			name:'market_sell',
 			displayName:'Market',
-			desc:'A market is set in this piece of [land] to sell or sell 100 items at once.',
+			desc:'A market is set in this piece of [land] to sell 100 items at once.',
 			icon:[1,0,"market_images", 2,1,"market_images"],
 			cost:{},
 			req:{'market_tech':true},
