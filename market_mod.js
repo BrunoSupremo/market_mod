@@ -377,10 +377,28 @@ G.AddData({
 			category:'market_category',
 		});
 
+		for (var i = 0; i < buy_effects.length; i++) {
+			for (key in buy_effects[i]) {
+				if (key == "from" || key == "into") {
+					for (subkey in buy_effects[i][key]) {
+						buy_effects[i][key][subkey] = buy_effects[i][key][subkey] *10;
+					}
+				}
+			}
+		}
+		for (var i = 0; i < sell_effects.length; i++) {
+			for (key in sell_effects[i]) {
+				if (key == "from" || key == "into") {
+					for (subkey in sell_effects[i][key]) {
+						sell_effects[i][key][subkey] = sell_effects[i][key][subkey] *10;
+					}
+				}
+			}
+		}
 		new G.Unit({
-			name:'market2',
+			name:'bazaar_buy',
 			displayName:'Bazaar',
-			desc:'A [market2] is set in this piece of [land] to sell or buy items in bulks of 10.',
+			desc:'A bazaar is set in this piece of [land] to buy items in bulks of 10.',
 			icon:[1,1,"market_images"],
 			cost:{},
 			req:{'market_tech':true},
@@ -389,42 +407,24 @@ G.AddData({
 				'land':1,
 			},
 			gizmos:true,
-			modes:{
-				'off':G.MODE_OFF,
-				'buy herb':{
-					name:'buy herbs',
-					icon: [2,0, "market_images", 4,6],
-					desc:'Buy [herb] at 1 [market_coin].'
-				},
-				'sell herb':{
-					name:'sell herbs',
-					icon: [1,0, "market_images", 4,6],
-					desc:'Sell [herb] for 0.5 [market_coin].'
-				},
+			modes: buy_modes,
+			effects: buy_effects,
+			category:'market_category',
+		});
+		new G.Unit({
+			name:'bazaar_sell',
+			displayName:'Bazaar',
+			desc:'A bazaar is set in this piece of [land] to sell items in bulks of 10.',
+			icon:[1,1,"market_images"],
+			cost:{},
+			req:{'market_tech':true},
+			use:{
+				'worker':1,
+				'land':1,
 			},
-			effects:[
-			{
-				type:'convert',
-				from:{'market_coin':10},
-				into:{'herb':10},
-				every:5,
-				mode:'buy herb'
-			},
-			{
-				type:'convert',
-				from:{'herb':10},
-				into:{'market_coin':5},
-				every:5,
-				mode:'sell herb'
-			},
-			{
-				type:'mult',
-				value:1.1,
-				req:{
-					'traders':true
-				}
-			}
-			],
+			gizmos:true,
+			modes: sell_modes,
+			effects: sell_effects,
 			category:'market_category',
 		});
 
