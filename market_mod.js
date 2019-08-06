@@ -34,7 +34,7 @@ G.AddData({
 
 		new G.Tech({
 			name:'advanced catalog',
-			desc:'[trader_sell] now have a more refined catalog, offering bigger control on what specific items should be traded.',
+			desc:'[trader_sell]s now have a more refined catalog, offering bigger control on what specific items should be traded.',
 			icon:[0,1,"market_images",24,1],
 			cost:{
 				'insight':15,
@@ -71,7 +71,7 @@ G.AddData({
 			'food':{
 				name:'Food (all)',
 				icon: [3,6],
-				desc:'Buy [food] with [market_coin].//Includes [herb], [fruit], [meat], [cooked meat], [cured meat], [seafood], [cooked seafood], [cured seafood], [bread] and [bugs] (when allowed as food)'
+				desc:'Buy [food] with [market_coin].<>Includes [herb], [fruit], [meat], [cooked meat], [cured meat], [seafood], [cooked seafood], [cured seafood], [bread] and [bugs] (when allowed as food)'
 			},
 			'herb':{
 				name:'Herb',
@@ -132,8 +132,7 @@ G.AddData({
 				icon: [8,11],
 				desc:'Buy [bugs] with [market_coin].',
 				req:{
-					'advanced catalog': true,
-					'insects as food': 'on'
+					'advanced catalog': true
 				}
 			},
 			'arch_build':{
@@ -190,7 +189,7 @@ G.AddData({
 					desc: new_desc
 				}
 				if (buy_modes[key].req){
-					sell_modes[key].req = buy_modes[key].req
+					sell_modes[key].req = buy_modes[key].req;
 				}
 			}
 		}
@@ -499,11 +498,13 @@ G.AddData({
 					buy_effects100[i][key]	= buy_effects[i][key];
 				}else{
 					if(key == 'req'){
-						sell_effects[i][key]	= {'traders':true};
-						sell_effects10[i][key]	= {'traders':true};
-						sell_effects100[i][key]	= {'traders':true};
-						buy_effects10[i][key]	= {'traders':true};
-						buy_effects100[i][key]	= {'traders':true};
+						for (reqkey in buy_effects[i].req) {
+							sell_effects[i].req		= buy_effects[i].req[reqkey];
+							sell_effects10[i].req	= buy_effects[i].req[reqkey];
+							sell_effects100[i].req	= buy_effects[i].req[reqkey];
+							buy_effects10[i].req	= buy_effects[i].req[reqkey];
+							buy_effects100[i].req	= buy_effects[i].req[reqkey];
+						}
 					}
 				}
 			}
