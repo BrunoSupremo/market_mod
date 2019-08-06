@@ -189,6 +189,9 @@ G.AddData({
 					icon: buy_modes[key].icon,
 					desc: new_desc
 				}
+				if (buy_modes[key].req){
+					sell_modes[key].req = buy_modes[key].req
+				}
 			}
 		}
 
