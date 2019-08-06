@@ -498,6 +498,11 @@ G.AddData({
 					buy_effects100[i][key]	= buy_effects[i][key];
 				}else{
 					if(key == 'req'){
+						sell_effects[i].req		= {};
+						sell_effects10[i].req	= {};
+						sell_effects100[i].req	= {};
+						buy_effects10[i].req	= {};
+						buy_effects100[i].req	= {};
 						for (reqkey in buy_effects[i].req) {
 							sell_effects[i].req[reqkey]		= buy_effects[i].req[reqkey];
 							sell_effects10[i].req[reqkey]	= buy_effects[i].req[reqkey];
