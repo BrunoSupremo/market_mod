@@ -16,8 +16,8 @@ G.AddData({
 
 		new G.Tech({
 			name:'market_tech',
-			displayName:'Markets',
-			desc:'@unlocks [trader_sell]s<>[population,Traders] can settle in a piece of [land] to buy or sell more items',
+			displayName:'Commerce',
+			desc:'@unlocks [trader_sell]s<>[population,Traders] are units that can buy or sell items',
 			icon:[0,0,"market_images",24,1],
 			cost:{
 				'insight':5,
@@ -34,7 +34,7 @@ G.AddData({
 
 		new G.Tech({
 			name:'advanced catalog',
-			desc:'[trader_sell]s now have a more refined catalog, offering bigger control on what specific items should be traded.',
+			desc:'@unlocks [bazaar_sell]s @unlocks [market_sell]s<>[trader_sell]s now have a more refined catalog, offering bigger control on what specific items should be traded.',
 			icon:[0,1,"market_images",24,1],
 			cost:{
 				'insight':15,
@@ -576,7 +576,10 @@ G.AddData({
 			desc:'A bazaar is set in this piece of [land] to buy items in bulks of 10.',
 			icon:[2,0,"market_images", 1,1,"market_images"],
 			cost:{},
-			req:{'market_tech':true},
+			req:{
+				'market_tech':true,
+				'advanced catalog':true,
+			},
 			use:{
 				'worker':1,
 				'land':1,
@@ -592,7 +595,10 @@ G.AddData({
 			desc:'A bazaar is set in this piece of [land] to sell items in bulks of 10.',
 			icon:[1,0,"market_images", 1,1,"market_images"],
 			cost:{},
-			req:{'market_tech':true},
+			req:{
+				'market_tech':true,
+				'advanced catalog':true,
+			},
 			use:{
 				'worker':1,
 				'land':1,
@@ -609,7 +615,10 @@ G.AddData({
 			desc:'A market is set in this piece of [land] to buy 100 items at once.',
 			icon:[2,0,"market_images", 2,1,"market_images"],
 			cost:{},
-			req:{'market_tech':true},
+			req:{
+				'market_tech':true,
+				'advanced catalog':true,
+			},
 			use:{
 				'worker':1,
 				'land':1,
@@ -625,7 +634,10 @@ G.AddData({
 			desc:'A market is set in this piece of [land] to sell 100 items at once.',
 			icon:[1,0,"market_images", 2,1,"market_images"],
 			cost:{},
-			req:{'market_tech':true},
+			req:{
+				'market_tech':true,
+				'advanced catalog':true,
+			},
 			use:{
 				'worker':1,
 				'land':1,
