@@ -32,6 +32,17 @@ G.AddData({
 			]
 		});
 
+		new G.Tech({
+			name:'advanced catalog',
+			desc:'[trader_sell] now have a more refined catalog, offering bigger control on what specific items should be traded.',
+			icon:[0,1,"market_images",24,1],
+			cost:{
+				'insight':15,
+				'culture':15
+			},
+			req:{'market_tech':true}
+		});
+
 		new G.Res({
 			name:'market_coin',
 			displayName:'Coins',
@@ -57,15 +68,61 @@ G.AddData({
 
 		let buy_modes = {
 			'off':G.MODE_OFF,
+			'food':{
+				name:'Food (all)',
+				icon: [3,6],
+				desc:'Buy [food] with [market_coin].//Includes [herb], [fruit], [meat], [cooked meat], [cured meat], [seafood], [cooked seafood], [cured seafood], [bread] and [bugs] (when allowed as food)'
+			},
 			'herb':{
-				name:'herbs',
+				name:'Herb',
 				icon: [4,6],
 				desc:'Buy [herb]s with [market_coin].'
 			},
-			'food':{
-				name:'food',
-				icon: [3,6],
-				desc:'Buy [food] with [market_coin].'
+			'fruit':{
+				name:'Fruit',
+				icon: [4,7],
+				desc:'Buy [fruit] with [market_coin].'
+			},
+			'meat':{
+				name:'Meat',
+				icon: [5,7],
+				desc:'Buy [meat] with [market_coin].'
+			},
+			'cooked meat':{
+				name:'Cooked meat',
+				icon: [6,7],
+				desc:'Buy [cooked meat] with [market_coin].'
+			},
+			'cured meat':{
+				name:'Cured meat',
+				icon: [11,6],
+				desc:'Buy [cured meat] with [market_coin].'
+			},
+			'seafood':{
+				name:'Seafood',
+				icon: [5,6],
+				desc:'Buy [seafood] with [market_coin].'
+			},
+			'cooked seafood':{
+				name:'Cooked seafood',
+				icon: [6,6],
+				desc:'Buy [cooked seafood] with [market_coin].'
+			},
+			'cured seafood':{
+				name:'Cured seafood',
+				icon: [12,6],
+				desc:'Buy [cured seafood] with [market_coin].'
+			},
+			'bread':{
+				name:'Bread',
+				icon: [7,7],
+				desc:'Buy [bread]s with [market_coin].'
+			},
+			'bugs':{
+				name:'Bugs',
+				icon: [8,11],
+				desc:'Buy [bugs] with [market_coin].',
+				req:{'insects as food': 'on'}
 			},
 			'arch_build':{
 				name:'archaic materials',
@@ -113,8 +170,8 @@ G.AddData({
 			if (key == 'off') {
 				sell_modes[key] = G.MODE_OFF;
 			}else{
-				let new_desc = buy_modes[key].desc.replace("Buy", "Sell");
-				new_desc = new_desc.replace("with", "for");
+				let new_desc = buy_modes[key].desc.replace("Buy ", "Sell ");
+				new_desc = new_desc.replace(" with ", " for ");
 				sell_modes[key] = {
 					name: buy_modes[key].name,
 					icon: buy_modes[key].icon,
@@ -125,7 +182,7 @@ G.AddData({
 
 		let buy_effects = [
 		{
-			mode:'herb',
+			mode:'food',
 			type:'convert',
 			from:{'market_coin':1},
 			into:{'herb':1},
@@ -148,14 +205,14 @@ G.AddData({
 		{
 			mode:'food',
 			type:'convert',
-			from:{'market_coin':1},
+			from:{'market_coin':2},
 			into:{'cooked meat':1},
 			every:5
 		},
 		{
 			mode:'food',
 			type:'convert',
-			from:{'market_coin':1},
+			from:{'market_coin':2},
 			into:{'cured meat':1},
 			every:5
 		},
@@ -169,14 +226,14 @@ G.AddData({
 		{
 			mode:'food',
 			type:'convert',
-			from:{'market_coin':1},
+			from:{'market_coin':2},
 			into:{'cooked seafood':1},
 			every:5
 		},
 		{
 			mode:'food',
 			type:'convert',
-			from:{'market_coin':1},
+			from:{'market_coin':2},
 			into:{'cured seafood':1},
 			every:5
 		},
@@ -190,29 +247,112 @@ G.AddData({
 		{
 			mode:'food',
 			type:'convert',
-			from:{'market_coin':1},
+			from:{'market_coin':0.5},
 			into:{'bugs':1},
 			every:5,
 			req:{'insects as food': 'on'}
 		},
 		{
-			mode:'arch_build',
+			mode:'herb',
 			type:'convert',
 			from:{'market_coin':1},
+			into:{'herb':1},
+			every:5,
+			req:{'advanced catalog': 'on'}
+		},
+		{
+			mode:'fruit',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'fruit':1},
+			every:5,
+			req:{'advanced catalog': 'on'}
+		},
+		{
+			mode:'meat',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'meat':1},
+			every:5,
+			req:{'advanced catalog': 'on'}
+		},
+		{
+			mode:'cooked meat',
+			type:'convert',
+			from:{'market_coin':2},
+			into:{'cooked meat':1},
+			every:5,
+			req:{'advanced catalog': 'on'}
+		},
+		{
+			mode:'cured meat',
+			type:'convert',
+			from:{'market_coin':2},
+			into:{'cured meat':1},
+			every:5,
+			req:{'advanced catalog': 'on'}
+		},
+		{
+			mode:'seafood',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'seafood':1},
+			every:5,
+			req:{'advanced catalog': 'on'}
+		},
+		{
+			mode:'cooked seafood',
+			type:'convert',
+			from:{'market_coin':2},
+			into:{'cooked seafood':1},
+			every:5,
+			req:{'advanced catalog': 'on'}
+		},
+		{
+			mode:'cured seafood',
+			type:'convert',
+			from:{'market_coin':2},
+			into:{'cured seafood':1},
+			every:5,
+			req:{'advanced catalog': 'on'}
+		},
+		{
+			mode:'bread',
+			type:'convert',
+			from:{'market_coin':1},
+			into:{'bread':1},
+			every:5,
+			req:{'advanced catalog': 'on'}
+		},
+		{
+			mode:'bugs',
+			type:'convert',
+			from:{'market_coin':0.5},
+			into:{'bugs':1},
+			every:5,
+			req:{
+				'advanced catalog': 'on',
+				'insects as food': 'on'
+			}
+		},
+		{
+			mode:'arch_build',
+			type:'convert',
+			from:{'market_coin':0.5},
 			into:{'stone':1},
 			every:5
 		},
 		{
 			mode:'arch_build',
 			type:'convert',
-			from:{'market_coin':1},
+			from:{'market_coin':0.5},
 			into:{'stick':1},
 			every:5
 		},
 		{
 			mode:'arch_build',
 			type:'convert',
-			from:{'market_coin':1},
+			from:{'market_coin':0.5},
 			into:{'bone':1},
 			every:5,
 			req:{'bone-working': true}
@@ -220,14 +360,14 @@ G.AddData({
 		{
 			mode:'arch_build',
 			type:'convert',
-			from:{'market_coin':1},
+			from:{'market_coin':0.5},
 			into:{'limestone':1},
 			every:5
 		},
 		{
 			mode:'arch_build',
 			type:'convert',
-			from:{'market_coin':1},
+			from:{'market_coin':0.5},
 			into:{'mud':1},
 			every:5
 		},
@@ -283,7 +423,7 @@ G.AddData({
 		{
 			mode:'sand',
 			type:'convert',
-			from:{'market_coin':1},
+			from:{'market_coin':0.5},
 			into:{'sand':1},
 			every:5,
 		},
@@ -297,7 +437,7 @@ G.AddData({
 		{
 			mode:'basic clothes',
 			type:'convert',
-			from:{'market_coin':1},
+			from:{'market_coin':2},
 			into:{'basic clothes':1},
 			every:5,
 		},
@@ -358,9 +498,9 @@ G.AddData({
 				sell_effects100[i].into	= {};
 				buy_effects10[i].from	= {};
 				buy_effects100[i].from	= {};
-				sell_effects[i].into[key] 		= buy_effects[i].from[key];
-				sell_effects10[i].into[key]		= buy_effects[i].from[key] *10;
-				sell_effects100[i].into[key]	= buy_effects[i].from[key] *100;
+				sell_effects[i].into[key] 		= buy_effects[i].from[key] /2;
+				sell_effects10[i].into[key]		= buy_effects[i].from[key] *5;
+				sell_effects100[i].into[key]	= buy_effects[i].from[key] *50;
 				buy_effects10[i].from[key]		= buy_effects[i].from[key] *10;
 				buy_effects100[i].from[key]		= buy_effects[i].from[key] *100;
 			}
