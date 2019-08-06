@@ -76,53 +76,65 @@ G.AddData({
 			'herb':{
 				name:'Herb',
 				icon: [4,6],
-				desc:'Buy [herb]s with [market_coin].'
+				desc:'Buy [herb]s with [market_coin].',
+				req:{'advanced catalog': true}
 			},
 			'fruit':{
 				name:'Fruit',
 				icon: [4,7],
-				desc:'Buy [fruit] with [market_coin].'
+				desc:'Buy [fruit] with [market_coin].',
+				req:{'advanced catalog': true}
 			},
 			'meat':{
 				name:'Meat',
 				icon: [5,7],
-				desc:'Buy [meat] with [market_coin].'
+				desc:'Buy [meat] with [market_coin].',
+				req:{'advanced catalog': true}
 			},
 			'cooked meat':{
 				name:'Cooked meat',
 				icon: [6,7],
-				desc:'Buy [cooked meat] with [market_coin].'
+				desc:'Buy [cooked meat] with [market_coin].',
+				req:{'advanced catalog': true}
 			},
 			'cured meat':{
 				name:'Cured meat',
 				icon: [11,6],
-				desc:'Buy [cured meat] with [market_coin].'
+				desc:'Buy [cured meat] with [market_coin].',
+				req:{'advanced catalog': true}
 			},
 			'seafood':{
 				name:'Seafood',
 				icon: [5,6],
-				desc:'Buy [seafood] with [market_coin].'
+				desc:'Buy [seafood] with [market_coin].',
+				req:{'advanced catalog': true}
 			},
 			'cooked seafood':{
 				name:'Cooked seafood',
 				icon: [6,6],
-				desc:'Buy [cooked seafood] with [market_coin].'
+				desc:'Buy [cooked seafood] with [market_coin].',
+				req:{'advanced catalog': true}
 			},
 			'cured seafood':{
 				name:'Cured seafood',
 				icon: [12,6],
-				desc:'Buy [cured seafood] with [market_coin].'
+				desc:'Buy [cured seafood] with [market_coin].',
+				req:{'advanced catalog': true}
 			},
 			'bread':{
 				name:'Bread',
 				icon: [7,7],
-				desc:'Buy [bread]s with [market_coin].'
+				desc:'Buy [bread]s with [market_coin].',
+				req:{'advanced catalog': true}
 			},
 			'bugs':{
 				name:'Bugs',
 				icon: [8,11],
-				desc:'Buy [bugs] with [market_coin].',
-				req:{'insects as food': 'on'}
+				desc:'Buy [bugs] with [market_coin].',,
+				req:{
+					'advanced catalog': true,
+					'insects as food': 'on'
+				}
 			},
 			'arch_build':{
 				name:'archaic materials',
@@ -258,7 +270,7 @@ G.AddData({
 			from:{'market_coin':1},
 			into:{'herb':1},
 			every:5,
-			req:{'advanced catalog': 'on'}
+			req:{'advanced catalog': true}
 		},
 		{
 			mode:'fruit',
@@ -266,7 +278,7 @@ G.AddData({
 			from:{'market_coin':1},
 			into:{'fruit':1},
 			every:5,
-			req:{'advanced catalog': 'on'}
+			req:{'advanced catalog': true}
 		},
 		{
 			mode:'meat',
@@ -274,7 +286,7 @@ G.AddData({
 			from:{'market_coin':1},
 			into:{'meat':1},
 			every:5,
-			req:{'advanced catalog': 'on'}
+			req:{'advanced catalog': true}
 		},
 		{
 			mode:'cooked meat',
@@ -282,7 +294,7 @@ G.AddData({
 			from:{'market_coin':2},
 			into:{'cooked meat':1},
 			every:5,
-			req:{'advanced catalog': 'on'}
+			req:{'advanced catalog': true}
 		},
 		{
 			mode:'cured meat',
@@ -290,7 +302,7 @@ G.AddData({
 			from:{'market_coin':2},
 			into:{'cured meat':1},
 			every:5,
-			req:{'advanced catalog': 'on'}
+			req:{'advanced catalog': true}
 		},
 		{
 			mode:'seafood',
@@ -298,7 +310,7 @@ G.AddData({
 			from:{'market_coin':1},
 			into:{'seafood':1},
 			every:5,
-			req:{'advanced catalog': 'on'}
+			req:{'advanced catalog': true}
 		},
 		{
 			mode:'cooked seafood',
@@ -306,7 +318,7 @@ G.AddData({
 			from:{'market_coin':2},
 			into:{'cooked seafood':1},
 			every:5,
-			req:{'advanced catalog': 'on'}
+			req:{'advanced catalog': true}
 		},
 		{
 			mode:'cured seafood',
@@ -314,7 +326,7 @@ G.AddData({
 			from:{'market_coin':2},
 			into:{'cured seafood':1},
 			every:5,
-			req:{'advanced catalog': 'on'}
+			req:{'advanced catalog': true}
 		},
 		{
 			mode:'bread',
@@ -322,7 +334,7 @@ G.AddData({
 			from:{'market_coin':1},
 			into:{'bread':1},
 			every:5,
-			req:{'advanced catalog': 'on'}
+			req:{'advanced catalog': true}
 		},
 		{
 			mode:'bugs',
@@ -331,7 +343,7 @@ G.AddData({
 			into:{'bugs':1},
 			every:5,
 			req:{
-				'advanced catalog': 'on',
+				'advanced catalog': true,
 				'insects as food': 'on'
 			}
 		},
