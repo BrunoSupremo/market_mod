@@ -130,7 +130,7 @@ G.AddData({
 			'bugs':{
 				name:'Bugs',
 				icon: [8,11],
-				desc:'Buy [bugs] with [market_coin].',,
+				desc:'Buy [bugs] with [market_coin].',
 				req:{
 					'advanced catalog': true,
 					'insects as food': 'on'
