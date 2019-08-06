@@ -499,11 +499,11 @@ G.AddData({
 				}else{
 					if(key == 'req'){
 						for (reqkey in buy_effects[i].req) {
-							sell_effects[i].req		= buy_effects[i].req[reqkey];
-							sell_effects10[i].req	= buy_effects[i].req[reqkey];
-							sell_effects100[i].req	= buy_effects[i].req[reqkey];
-							buy_effects10[i].req	= buy_effects[i].req[reqkey];
-							buy_effects100[i].req	= buy_effects[i].req[reqkey];
+							sell_effects[i].req[reqkey]		= buy_effects[i].req[reqkey];
+							sell_effects10[i].req[reqkey]	= buy_effects[i].req[reqkey];
+							sell_effects100[i].req[reqkey]	= buy_effects[i].req[reqkey];
+							buy_effects10[i].req[reqkey]	= buy_effects[i].req[reqkey];
+							buy_effects100[i].req[reqkey]	= buy_effects[i].req[reqkey];
 						}
 					}
 				}
