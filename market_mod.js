@@ -50,8 +50,8 @@ G.AddData({
 
         new G.Policy({
             name: 'extended food catalog',
-            desc: 'The trading options for [food] will be refined and you will be able to fine tune what item from that category you want to trade (instead of the whole category)',
-            icon: [0, 0, "market_images", 3, 6],
+            desc: 'The [food] trading will be refined. You will be able to fine tune what specific items from the category you want to trade (instead of the whole category)',
+            icon: [0, 2, "market_images", 3, 6],
             cost: {'influence': 2 },
             startMode: 'off',
             req: {'advanced catalog': true },
@@ -59,8 +59,8 @@ G.AddData({
         });
         new G.Policy({
             name: 'extended archaic catalog',
-            desc: 'The trading options for [archaic building materials] will be refined and you will be able to fine tune what item from that category you want to trade (instead of the whole category)',
-            icon: [0, 0, "market_images", 2, 7],
+            desc: 'The [archaic building materials] trading will be refined. You will be able to fine tune what specific items from the category you want to trade (instead of the whole category)',
+            icon: [0, 2, "market_images", 2, 7],
             cost: {'influence': 2 },
             startMode: 'off',
             req: {'advanced catalog': true },
@@ -68,8 +68,8 @@ G.AddData({
         });
         new G.Policy({
             name: 'extended basic catalog',
-            desc: 'The trading options for [basic building materials] will be refined and you will be able to fine tune what item from that category you want to trade (instead of the whole category)',
-            icon: [0, 0, "market_images", 2, 8],
+            desc: 'The [basic building materials] trading will be refined. You will be able to fine tune what specific items from the category you want to trade (instead of the whole category)',
+            icon: [0, 2, "market_images", 2, 8],
             cost: {'influence': 2 },
             startMode: 'off',
             req: {'advanced catalog': true },
@@ -77,8 +77,8 @@ G.AddData({
         });
         new G.Policy({
             name: 'extended precious catalog',
-            desc: 'The trading options for [precious building materials] will be refined and you will be able to fine tune what item from that category you want to trade (instead of the whole category)',
-            icon: [0, 0, "market_images", 16, 8],
+            desc: 'The [precious building materials] trading will be refined. You will be able to fine tune what specific items from the category you want to trade (instead of the whole category)',
+            icon: [0, 2, "market_images", 16, 8],
             cost: {'influence': 2 },
             startMode: 'off',
             req: {'advanced catalog': true },
