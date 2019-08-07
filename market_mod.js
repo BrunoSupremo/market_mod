@@ -142,51 +142,83 @@ G.AddData({
 				name:'Stone',
 				icon: [2,6],
 				desc:'Buy [stone] with [market_coin].',
-				req:{
-					'advanced catalog': true
-				}
+				req:{'advanced catalog': true }
 			},
 			'stick':{
 				name:'Stick',
 				icon: [0,6],
 				desc:'Buy [stick] with [market_coin].',
-				req:{
-					'advanced catalog': true
-				}
+				req:{'advanced catalog': true }
 			},
 			'limestone':{
 				name:'Limestone',
 				icon: [6,8],
 				desc:'Buy [limestone] with [market_coin].',
-				req:{
-					'advanced catalog': true
-				}
+				req:{'advanced catalog': true }
 			},
 			'mud':{
 				name:'Mud',
 				icon: [0,7],
 				desc:'Buy [mud] with [market_coin].',
-				req:{
-					'advanced catalog': true
-				}
+				req:{'advanced catalog': true }
 			},
 			'bone':{
 				name:'Bone',
 				icon: [8,7],
 				desc:'Buy [bone] with [market_coin].',
-				req:{
-					'advanced catalog': true
-				}
+				req:{'advanced catalog': true }
 			},
 			'base_build':{
-				name:'basic materials',
+				name:'Basic materials (all)',
 				icon: [2,8],
 				desc:'Buy [basic building materials] with [market_coin].<>Includes [cut stone], [log], [lumber], and [brick]'
 			},
+			'cut stone':{
+				name:'Cut stone',
+				icon: [0,8],
+				desc:'Buy [cut stone] with [market_coin].',
+				req:{'advanced catalog': true }
+			},
+			'log':{
+				name:'Log',
+				icon: [1,6],
+				desc:'Buy [log] with [market_coin].',
+				req:{'advanced catalog': true }
+			},
+			'lumber':{
+				name:'Lumber',
+				icon: [1,8],
+				desc:'Buy [lumber] with [market_coin].',
+				req:{'advanced catalog': true }
+			},
+			'brick':{
+				name:'Brick',
+				icon: [3,8],
+				desc:'Buy [brick] with [market_coin].',
+				req:{'advanced catalog': true }
+			},
 			'precious_materials':{
-				name:'precious materials',
+				name:'Precious materials',
 				icon: [16,8],
 				desc:'Buy [precious building materials] with [market_coin].<>Includes [marble], [gold block] and [gem block]'
+			},
+			'marble':{
+				name:'Marble',
+				icon: [7,8],
+				desc:'Buy [marble] with [market_coin].',
+				req:{'advanced catalog': true }
+			},
+			'gold block':{
+				name:'Gold block',
+				icon: [14,8],
+				desc:'Buy [gold block] with [market_coin].',
+				req:{'advanced catalog': true }
+			},
+			'gem block':{
+				name:'Gem block',
+				icon: [17,8],
+				desc:'Buy [gem block] with [market_coin].',
+				req:{'advanced catalog': true }
 			},
 			'sand':{
 				name:'sand',
@@ -489,6 +521,38 @@ G.AddData({
 			every:5
 		},
 		{
+			mode:'cut stone',
+			type:'convert',
+			from:{'market_coin':0.5},
+			into:{'cut stone':1},
+			every:5,
+			req:{'advanced catalog': true}
+		},
+		{
+			mode:'log',
+			type:'convert',
+			from:{'market_coin':0.5},
+			into:{'log':1},
+			every:5,
+			req:{'advanced catalog': true}
+		},
+		{
+			mode:'lumber',
+			type:'convert',
+			from:{'market_coin':0.5},
+			into:{'lumber':1},
+			every:5,
+			req:{'advanced catalog': true}
+		},
+		{
+			mode:'brick',
+			type:'convert',
+			from:{'market_coin':0.5},
+			into:{'brick':1},
+			every:5,
+			req:{'advanced catalog': true}
+		},
+		{
 			mode:'precious_materials',
 			type:'convert',
 			from:{'market_coin':1},
@@ -508,6 +572,30 @@ G.AddData({
 			from:{'market_coin':1},
 			into:{'gem block':1},
 			every:5,
+		},
+		{
+			mode:'marble',
+			type:'convert',
+			from:{'market_coin':0.5},
+			into:{'marble':1},
+			every:5,
+			req:{'advanced catalog': true}
+		},
+		{
+			mode:'gold block',
+			type:'convert',
+			from:{'market_coin':0.5},
+			into:{'gold block':1},
+			every:5,
+			req:{'advanced catalog': true}
+		},
+		{
+			mode:'gem block',
+			type:'convert',
+			from:{'market_coin':0.5},
+			into:{'gem block':1},
+			every:5,
+			req:{'advanced catalog': true}
 		},
 		{
 			mode:'sand',
