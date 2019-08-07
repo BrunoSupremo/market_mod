@@ -11,7 +11,7 @@ G.AddData({
 	func:function() {
 		G.unitCategories.unshift({
 			id:'market_category',
-			name:'Market'
+			name:'Trading'
 		});
 
 		new G.Tech({
@@ -131,24 +131,62 @@ G.AddData({
 				name:'Bugs',
 				icon: [8,11],
 				desc:'Buy [bugs] with [market_coin].',
+				req:{'advanced catalog': true }
+			},
+			'arch_build':{
+				name:'Archaic materials (all)',
+				icon: [2,7],
+				desc:'Buy [archaic building materials] with [market_coin].<>Includes [stone], [stick], [limestone], [mud] and [bone] (if bone-working is researched)'
+			},
+			'stone':{
+				name:'Stone',
+				icon: [2,6],
+				desc:'Buy [stone] with [market_coin].',
 				req:{
 					'advanced catalog': true
 				}
 			},
-			'arch_build':{
-				name:'archaic materials',
-				icon: [2,7],
-				desc:'Buy [archaic building materials] with [market_coin].'
+			'stick':{
+				name:'Stick',
+				icon: [0,6],
+				desc:'Buy [stick] with [market_coin].',
+				req:{
+					'advanced catalog': true
+				}
+			},
+			'limestone':{
+				name:'Limestone',
+				icon: [6,8],
+				desc:'Buy [limestone] with [market_coin].',
+				req:{
+					'advanced catalog': true
+				}
+			},
+			'mud':{
+				name:'Mud',
+				icon: [0,7],
+				desc:'Buy [mud] with [market_coin].',
+				req:{
+					'advanced catalog': true
+				}
+			},
+			'bone':{
+				name:'Bone',
+				icon: [8,7],
+				desc:'Buy [bone] with [market_coin].',
+				req:{
+					'advanced catalog': true
+				}
 			},
 			'base_build':{
 				name:'basic materials',
 				icon: [2,8],
-				desc:'Buy [basic building materials] with [market_coin].'
+				desc:'Buy [basic building materials] with [market_coin].<>Includes [cut stone], [log], [lumber], and [brick]'
 			},
 			'precious_materials':{
 				name:'precious materials',
 				icon: [16,8],
-				desc:'Buy [precious building materials] with [market_coin].'
+				desc:'Buy [precious building materials] with [market_coin].<>Includes [marble], [gold block] and [gem block]'
 			},
 			'sand':{
 				name:'sand',
@@ -344,10 +382,7 @@ G.AddData({
 			from:{'market_coin':0.5},
 			into:{'bugs':1},
 			every:5,
-			req:{
-				'advanced catalog': true,
-				'insects as food': 'on'
-			}
+			req:{'advanced catalog': true }
 		},
 		{
 			mode:'arch_build',
@@ -384,6 +419,46 @@ G.AddData({
 			from:{'market_coin':0.5},
 			into:{'mud':1},
 			every:5
+		},
+		{
+			mode:'stone',
+			type:'convert',
+			from:{'market_coin':0.5},
+			into:{'stone':1},
+			every:5,
+			req:{'advanced catalog': true}
+		},
+		{
+			mode:'stick',
+			type:'convert',
+			from:{'market_coin':0.5},
+			into:{'stick':1},
+			every:5,
+			req:{'advanced catalog': true}
+		},
+		{
+			mode:'bone',
+			type:'convert',
+			from:{'market_coin':0.5},
+			into:{'bone':1},
+			every:5,
+			req:{'advanced catalog': true }
+		},
+		{
+			mode:'limestone',
+			type:'convert',
+			from:{'market_coin':0.5},
+			into:{'limestone':1},
+			every:5,
+			req:{'advanced catalog': true}
+		},
+		{
+			mode:'mud',
+			type:'convert',
+			from:{'market_coin':0.5},
+			into:{'mud':1},
+			every:5,
+			req:{'advanced catalog': true}
 		},
 		{
 			mode:'base_build',
@@ -620,7 +695,7 @@ G.AddData({
 				'advanced catalog':true,
 			},
 			use:{
-				'worker':1,
+				'worker':2,
 				'land':1,
 			},
 			gizmos:true,
@@ -639,7 +714,7 @@ G.AddData({
 				'advanced catalog':true,
 			},
 			use:{
-				'worker':1,
+				'worker':2,
 				'land':1,
 			},
 			gizmos:true,
