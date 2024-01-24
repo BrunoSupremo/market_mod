@@ -749,11 +749,7 @@ G.AddData({
 			displayName:'Trader',
 			desc:'Dummy Unit. To display an icon without the sell/buy label',
 			icon:[0,1,"market_images"],
-			cost:{},
-			req:{'impossible':true},
-			use:{},
-			gizmos:true,
-			category:'market_category',
+			req:{},
 		});
 		new G.Unit({
 			name:'trader_buy',
@@ -791,11 +787,7 @@ G.AddData({
 			displayName:'Bazaar',
 			desc:'Dummy Unit. To display an icon without the sell/buy label',
 			icon:[1,1,"market_images"],
-			cost:{},
-			req:{'impossible':true},
-			use:{},
-			gizmos:true,
-			category:'market_category',
+			req:{},
 		});
 		new G.Unit({
 			name:'bazaar_buy',
@@ -841,11 +833,7 @@ G.AddData({
 			displayName:'Market',
 			desc:'Dummy Unit. To display an icon without the sell/buy label',
 			icon:[2,1,"market_images"],
-			cost:{},
-			req:{'impossible':true},
-			use:{},
-			gizmos:true,
-			category:'market_category',
+			req:{},
 		});
 		new G.Unit({
 			name:'market_buy',
@@ -885,7 +873,7 @@ G.AddData({
 			effects: sell_effects100,
 			category:'market_category',
 		});
-		
+
 		//copied from the heritage mod.
 		//it protects "http://" (e.g. from image links) from string manipulations
 		G.fixTooltipIcons=function() {
