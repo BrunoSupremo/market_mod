@@ -17,7 +17,7 @@ G.AddData({
 		new G.Tech({
 			name:'market_tech',
 			displayName:'Commerce',
-			desc:'@unlocks [trader_sell]s<>[population,Traders] are units that can buy or sell items',
+			desc:'@unlocks [trader_icon]s<>[population,Traders] are units that can buy or sell items',
 			icon:[0,0,"market_images",24,1],
 			cost:{
 				'insight':5,
@@ -34,7 +34,7 @@ G.AddData({
 
 		new G.Tech({
 			name:'advanced catalog',
-			desc:'@unlocks [bazaar_sell]s @unlocks [market_sell]s @unlocks [influence,trading policies]<>[trader_sell]s now have a more refined catalog, offering bigger control on what specific items should be traded.',
+			desc:'@unlocks [bazaar_icon]s @unlocks [market_icon]s @unlocks [influence,trading policies]<>[population,Traders] now have a more refined catalog, offering bigger control on what specific items should be traded.',
 			icon:[0,1,"market_images",24,1],
 			cost:{
 				'insight':15,
@@ -88,7 +88,7 @@ G.AddData({
 		new G.Res({
 			name:'market_coin',
 			displayName:'Coins',
-			desc:'Market currency used to buy and sell other goods.//Used by [population,Traders].//Can be stolen over time',
+			desc:'Market currency used to buy and sell other goods.//Used by [trader_icon]s, [bazaar_icon]s and [market_icon]s.//Can be stolen over time',
 			icon:[0,0,"market_images"],
 			category:'misc',
 			tick:function(me,tick) {
@@ -262,10 +262,10 @@ G.AddData({
 				desc:'Buy [gem block] with [market_coin].',
 				req:{'extended precious catalog': 'on' }
 			},
-			'sand':{
-				name:'sand',
+			'coal':{
+				name:'coal',
 				icon: [4,9],
-				desc:'Buy [sand] with [market_coin].'
+				desc:'Buy [coal] with [market_coin].'
 			},
 			'leather':{
 				name:'leather',
@@ -640,10 +640,10 @@ G.AddData({
 			req:{'advanced catalog': true}
 		},
 		{
-			mode:'sand',
+			mode:'coal',
 			type:'convert',
-			from:{'market_coin':0.5},
-			into:{'sand':1},
+			from:{'market_coin':1},
+			into:{'coal':1},
 			every:5,
 		},
 		{
@@ -745,6 +745,17 @@ G.AddData({
 		}
 
 		new G.Unit({
+			name:'trader_icon',
+			displayName:'Trader',
+			desc:'Dummy Unit. To display an icon without the sell/buy label',
+			icon:[0,1,"market_images"],
+			cost:{},
+			req:{'impossible':true},
+			use:{},
+			gizmos:true,
+			category:'market_category',
+		});
+		new G.Unit({
 			name:'trader_buy',
 			displayName:'Trader',
 			desc:'A [population, Trader] that can buy items.',
@@ -775,6 +786,17 @@ G.AddData({
 			category:'market_category',
 		});
 
+		new G.Unit({
+			name:'bazaar_icon',
+			displayName:'Bazaar',
+			desc:'Dummy Unit. To display an icon without the sell/buy label',
+			icon:[1,1,"market_images"],
+			cost:{},
+			req:{'impossible':true},
+			use:{},
+			gizmos:true,
+			category:'market_category',
+		});
 		new G.Unit({
 			name:'bazaar_buy',
 			displayName:'Bazaar',
@@ -815,6 +837,17 @@ G.AddData({
 		});
 
 		new G.Unit({
+			name:'market_icon',
+			displayName:'Market',
+			desc:'Dummy Unit. To display an icon without the sell/buy label',
+			icon:[2,1,"market_images"],
+			cost:{},
+			req:{'impossible':true},
+			use:{},
+			gizmos:true,
+			category:'market_category',
+		});
+		new G.Unit({
 			name:'market_buy',
 			displayName:'Market',
 			desc:'A market is set in this piece of [land] to buy 100 items at once.',
@@ -853,4 +886,27 @@ G.AddData({
 			category:'market_category',
 		});
 	}
+
+	//copied from the heritage mod.
+	//it protects "http://" (e.g. from image links) from string manipulations
+	G.fixTooltipIcons=function() {
+		G.parse=function(what) {
+			var str='<div class="par">'+((what
+				.replaceAll(']s',',*PLURAL*]'))
+			.replace(/\[(.*?)\]/gi,G.parseFunc))
+			.replaceAll('http(s?)://','http$1:#SLASH#SLASH#')
+			.replaceAll('//','</div><div class="par">')
+			.replaceAll('#SLASH#SLASH#','//')
+			.replaceAll('@','</div><div class="par bulleted">')
+			.replaceAll('<>','</div><div class="divider"></div><div class="par">')+'</div>';
+			return str;
+		}
+	}
+	G.initializeFixIcons=function() {
+		if (G.parse("http://").search("http://") == -1) {
+			G.fixTooltipIcons();
+			setTimeout(G.initializeFixIcons,500);
+		}
+	}
+	G.initializeFixIcons();
 });
