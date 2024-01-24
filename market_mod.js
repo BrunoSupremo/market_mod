@@ -885,28 +885,28 @@ G.AddData({
 			effects: sell_effects100,
 			category:'market_category',
 		});
-	}
-
-	//copied from the heritage mod.
-	//it protects "http://" (e.g. from image links) from string manipulations
-	G.fixTooltipIcons=function() {
-		G.parse=function(what) {
-			var str='<div class="par">'+((what
-				.replaceAll(']s',',*PLURAL*]'))
-			.replace(/\[(.*?)\]/gi,G.parseFunc))
-			.replaceAll('http(s?)://','http$1:#SLASH#SLASH#')
-			.replaceAll('//','</div><div class="par">')
-			.replaceAll('#SLASH#SLASH#','//')
-			.replaceAll('@','</div><div class="par bulleted">')
-			.replaceAll('<>','</div><div class="divider"></div><div class="par">')+'</div>';
-			return str;
+		
+		//copied from the heritage mod.
+		//it protects "http://" (e.g. from image links) from string manipulations
+		G.fixTooltipIcons=function() {
+			G.parse=function(what) {
+				var str='<div class="par">'+((what
+					.replaceAll(']s',',*PLURAL*]'))
+				.replace(/\[(.*?)\]/gi,G.parseFunc))
+				.replaceAll('http(s?)://','http$1:#SLASH#SLASH#')
+				.replaceAll('//','</div><div class="par">')
+				.replaceAll('#SLASH#SLASH#','//')
+				.replaceAll('@','</div><div class="par bulleted">')
+				.replaceAll('<>','</div><div class="divider"></div><div class="par">')+'</div>';
+				return str;
+			}
 		}
-	}
-	G.initializeFixIcons=function() {
-		if (G.parse("http://").search("http://") == -1) {
-			G.fixTooltipIcons();
-			setTimeout(G.initializeFixIcons,500);
+		G.initializeFixIcons=function() {
+			if (G.parse("http://").search("http://") == -1) {
+				G.fixTooltipIcons();
+				setTimeout(G.initializeFixIcons,500);
+			}
 		}
+		G.initializeFixIcons();
 	}
-	G.initializeFixIcons();
 });
