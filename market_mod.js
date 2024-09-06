@@ -264,7 +264,7 @@ G.AddData({
 			},
 			'coal':{
 				name:'coal',
-				icon: [4,9],
+				icon: [12,8],
 				desc:'Buy [coal] with [market_coin].'
 			},
 			'leather':{
